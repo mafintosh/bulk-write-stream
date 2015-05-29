@@ -1,0 +1,22 @@
+{
+  "name": "bulk-write-stream",
+  "version": "0.0.0",
+  "description": "Writable stream that forwards everything in the highWaterMark buffer to a custom write function using the new writev api in streams",
+  "main": "index.js",
+  "dependencies": {
+    "readable-stream": "^1.1.13"
+  },
+  "devDependencies": {
+    "tape": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/bulk-write-stream.git"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/bulk-write-stream/issues"
+  },
+  "homepage": "https://github.com/mafintosh/bulk-write-stream"
+}

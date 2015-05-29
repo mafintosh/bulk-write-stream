@@ -7,6 +7,8 @@ to a custom `write` function using the new [writev](https://nodejs.org/api/strea
 npm install bulk-write-stream
 ```
 
+[![build status](http://img.shields.io/travis/mafintosh/bulk-write-stream.svg?style=flat)](http://travis-ci.org/mafintosh/bulk-write-stream)
+
 ## Usage
 
 ``` js

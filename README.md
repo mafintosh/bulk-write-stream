@@ -27,12 +27,14 @@ ws.write('d')
 
 ## API
 
-#### `var ws = bulk([options], write)`
+#### `var ws = bulk([options], write, [flush])`
 
 Create a new binary bulk write stream. Options are forwarded to the writable stream constructor.
 Write is called with `write(list, cb)` where list is everything currently buffered in the writable stream.
 
-#### `var ws = bulk.obj([options], write)`
+If you specify a flush function that will be called with `flush(cb)` before the stream emits `finish`.
+
+#### `var ws = bulk.obj([options], write, [flush])`
 
 A shorthand for setting `objectMode: true`
 

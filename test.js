@@ -34,3 +34,49 @@ tape('bulk list', function (t) {
     t.end()
   })
 })
+
+tape('flush', function (t) {
+  var expected = [['a'], ['b', 'c', 'd']]
+  var flushed = false
+
+  var ws = bulk.obj(function (list, cb) {
+    t.same(list, expected.shift())
+    process.nextTick(cb)
+  }, function (cb) {
+    flushed = true
+    cb()
+  })
+
+  ws.write('a')
+  ws.write('b')
+  ws.write('c')
+  ws.write('d')
+
+  ws.end(function () {
+    t.ok(flushed)
+    t.end()
+  })
+})
+
+tape('flush binary', function (t) {
+  var expected = [[new Buffer('a')], [new Buffer('b'), new Buffer('c'), new Buffer('d')]]
+  var flushed = false
+
+  var ws = bulk.obj(function (list, cb) {
+    t.same(list, expected.shift())
+    process.nextTick(cb)
+  }, function (cb) {
+    flushed = true
+    cb()
+  })
+
+  ws.write(new Buffer('a'))
+  ws.write(new Buffer('b'))
+  ws.write(new Buffer('c'))
+  ws.write(new Buffer('d'))
+
+  ws.end(function () {
+    t.ok(flushed)
+    t.end()
+  })
+})

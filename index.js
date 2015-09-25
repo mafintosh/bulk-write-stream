@@ -1,7 +1,7 @@
 var stream = require('readable-stream')
 var util = require('util')
 
-var SIGNAL_FLUSH = new Buffer(0)
+var SIGNAL_FLUSH = new Buffer([0])
 
 var Bulk = function (opts, worker, flush) {
   if (!(this instanceof Bulk)) return new Bulk(opts, worker, flush)

@@ -35,6 +35,26 @@ tape('bulk list', function (t) {
   })
 })
 
+tape('flush one', function (t) {
+  var expected = [[new Buffer('a')]]
+  var flushed = false
+
+  var ws = bulk(function (list, cb) {
+    t.same(list, expected.shift())
+    process.nextTick(cb)
+  }, function (cb) {
+    flushed = true
+    cb()
+  })
+
+  ws.write('a')
+
+  ws.end(function () {
+    t.ok(flushed)
+    t.end()
+  })
+})
+
 tape('flush', function (t) {
   var expected = [['a'], ['b', 'c', 'd']]
   var flushed = false

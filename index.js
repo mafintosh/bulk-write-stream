@@ -1,5 +1,5 @@
 var stream = require('readable-stream')
-var util = require('util')
+var inherits = require('inherits')
 
 var SIGNAL_FLUSH = new Buffer([0])
 
@@ -18,7 +18,7 @@ var Bulk = function (opts, worker, flush) {
   this.destroyed = false
 }
 
-util.inherits(Bulk, stream.Writable)
+inherits(Bulk, stream.Writable)
 
 Bulk.obj = function (opts, worker, flush) {
   if (typeof opts === 'function') return Bulk.obj(null, opts, worker)

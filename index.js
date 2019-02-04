@@ -1,8 +1,7 @@
 var stream = require('readable-stream')
 var inherits = require('inherits')
-var bufferFrom = require('buffer-from')
 
-var SIGNAL_FLUSH = bufferFrom([0])
+var SIGNAL_FLUSH = Buffer.from([0])
 
 var Bulk = function (opts, worker, flush) {
   if (!(this instanceof Bulk)) return new Bulk(opts, worker, flush)

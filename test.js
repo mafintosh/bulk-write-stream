@@ -1,6 +1,5 @@
 var tape = require('tape')
 var bulk = require('./')
-var bufferFrom = require('buffer-from')
 
 tape('input matches', function (t) {
   var expected = ['a', 'b', 'c', 'd']
@@ -37,7 +36,7 @@ tape('bulk list', function (t) {
 })
 
 tape('flush one', function (t) {
-  var expected = [[bufferFrom('a')]]
+  var expected = [[Buffer.from('a')]]
   var flushed = false
 
   var ws = bulk(function (list, cb) {
@@ -80,7 +79,7 @@ tape('flush', function (t) {
 })
 
 tape('flush binary', function (t) {
-  var expected = [[bufferFrom('a')], [bufferFrom('b'), bufferFrom('c'), bufferFrom('d')]]
+  var expected = [[Buffer.from('a')], [Buffer.from('b'), Buffer.from('c'), Buffer.from('d')]]
   var flushed = false
 
   var ws = bulk.obj(function (list, cb) {
@@ -91,10 +90,10 @@ tape('flush binary', function (t) {
     cb()
   })
 
-  ws.write(bufferFrom('a'))
-  ws.write(bufferFrom('b'))
-  ws.write(bufferFrom('c'))
-  ws.write(bufferFrom('d'))
+  ws.write(Buffer.from('a'))
+  ws.write(Buffer.from('b'))
+  ws.write(Buffer.from('c'))
+  ws.write(Buffer.from('d'))
 
   ws.end(function () {
     t.ok(flushed)

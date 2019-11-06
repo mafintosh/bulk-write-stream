@@ -1,6 +1,6 @@
 {
   "name": "bulk-write-stream",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Writable stream that forwards everything in the highWaterMark buffer to a custom write function using the new writev api in streams",
   "main": "index.js",
   "dependencies": {
